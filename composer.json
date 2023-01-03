@@ -2,7 +2,8 @@
     "name": "keradus/php-cs-fixer-repro-cases",
     "require": {
         "php": "^8.1",
-        "friendsofphp/php-cs-fixer": "3.13.1"
+        "friendsofphp/php-cs-fixer": "3.13.1",
+        "jubeki/laravel-code-style": "^1.1"
     },
     "autoload": {
         "psr-4": {
@@ -10,6 +11,6 @@
         }
     },
     "scripts": {
-        "repro": "./vendor/bin/php-cs-fixer fix -vvv --dry-run --diff"
+        "repro": "./vendor/bin/php-cs-fixer fix . -vvv --dry-run --diff"
     }
 }

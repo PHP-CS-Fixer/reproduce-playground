@@ -1,21 +1,26 @@
 <?php
 
-declare(strict_types=1);
+use Jubeki\LaravelCodeStyle\Config;
+use PhpCsFixer\Finder;
 
-$finder = PhpCsFixer\Finder::create()
-    ->ignoreDotFiles(false)
-    ->ignoreVCSIgnored(true)
-    ->in(__DIR__)
-;
+$base_path = dirname($path);
 
-$config = new PhpCsFixer\Config();
-$config
-    ->setRiskyAllowed(true)
+$files[] = '/vendor/autoload.php';
+$files[] = '/bootstrap/app.php';
+
+foreach ($files as $file) {
+    $required = $base_path.$file;
+    if (file_exists($required)) {
+        require $required;
+        break;
+    }
+}
+
+return (new Config())
+    ->setFinder(Finder::create())
     ->setRules([
-        '@PhpCsFixer' => true,
-        '@PhpCsFixer:risky' => true,
-    ])
-    ->setFinder($finder)
-;
-
-return $config;
+        '@Laravel' => true,
+        'braces' => true,
+        'array_indentation' => true,
+        'single_line_comment_style' => false,
+    ]);
