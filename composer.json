@@ -11,6 +11,6 @@
         }
     },
     "scripts": {
-        "repro": "./vendor/bin/php-cs-fixer fix . -vvv --dry-run --diff"
+        "repro": "./vendor/bin/php-cs-fixer fix --using-cache=no --format=json --config=.php-cs-fixer.dist.php --path-mode=override .php-cs-fixer.dist.php"
     }
 }
