@@ -1,0 +1,33 @@
+name: CI
+
+on:
+    - pull_request
+    - push
+
+jobs:
+    tests:
+        name: "PHP ${{matrix.php}}"
+        runs-on: "ubuntu-24.04"
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    -   php: "8.1"
+                    -   php: "8.2"
+                    -   php: "8.3"
+
+        steps:
+            -   name: Checkout source
+                uses: actions/checkout@v4
+
+            -   name: PHP setup
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+                    ini-values: zend.assertions=1, error_reporting=-1, display_errors=On, log_errors_max_len=0
+
+            -   name: "Update composer dependencies"
+                run: composer update -o --no-interaction --no-progress
+
+            -   name: Run check
+                run: composer reproduce
