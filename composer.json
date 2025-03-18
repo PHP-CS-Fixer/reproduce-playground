@@ -1,12 +1,12 @@
 {
-    "name": "keradus/php-cs-fixer-repro-cases",
+    "name": "friendsofphp/reproduce-playground",
     "require": {
         "php": "^8.1",
         "friendsofphp/php-cs-fixer": "3.72"
     },
     "autoload": {
         "psr-4": {
-            "keradus\\PhpCsFixerReproCases\\": "src/"
+            "PhpCsFixer\\ReproducePlayground\\": "src/"
         }
     },
     "scripts": {

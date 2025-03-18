@@ -1,6 +1,6 @@
 <?php
 
-namespace keradus\PhpCsFixerReproCases;
+namespace PhpCsFixer\ReproducePlayground;
 
 
 /**
