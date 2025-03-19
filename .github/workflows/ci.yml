@@ -15,6 +15,8 @@ jobs:
                     -   php: "8.1"
                     -   php: "8.2"
                     -   php: "8.3"
+                    -   php: "8.4"
+                        PHP_CS_FIXER_IGNORE_ENV: 1
 
         steps:
             -   name: Checkout source
@@ -30,4 +32,6 @@ jobs:
                 run: composer update -o --no-interaction --no-progress
 
             -   name: Run check
+                env:
+                    PHP_CS_FIXER_IGNORE_ENV: ${{ matrix.PHP_CS_FIXER_IGNORE_ENV }}
                 run: composer reproduce
